@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <h2>🌾 Farm Marketplace</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/add-product">Sell Produce</a>
+        <a href="/orders">Orders</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h1>Orders</h1>
+
+    {% if orders %}
+
+    <table>
+
+        <tr>
+            <th>Order ID</th>
+            <th>Product</th>
+            <th>Farmer</th>
+            <th>Buyer</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Status</th>
+        </tr>
+
+        {% for order in orders %}
+
+        <tr>
+            <td>{{ order["id"] }}</td>
+            <td>{{ order["product_name"] }}</td>
+            <td>{{ order["farmer_name"] }}</td>
+            <td>{{ order["buyer_name"] }}</td>
+            <td>{{ order["quantity"] }} kg</td>
+            <td>₹{{ order["total_price"] }}</td>
+            <td>{{ order["status"] }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p>No orders have been placed yet.</p>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Produce</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <h2>🌾 Farm Marketplace</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/add-product">Sell Produce</a>
+        <a href="/orders">Orders</a>
+    </div>
+</nav>
+
+<div class="form-container">
+
+    <h1>List Your Produce</h1>
+
+    <form method="POST">
+
+        <label>Farmer Name</label>
+        <input
+            type="text"
+            name="farmer_name"
+            placeholder="Enter farmer name"
+            required
+        >
+
+        <label>Produce Name</label>
+        <input
+            type="text"
+            name="name"
+            placeholder="Example: Tomatoes"
+            required
+        >
+
+        <label>Quantity (kg)</label>
+        <input
+            type="number"
+            name="quantity"
+            min="1"
+            required
+        >
+
+        <label>Price per kg (₹)</label>
+        <input
+            type="number"
+            name="price"
+            min="1"
+            step="0.01"
+            required
+        >
+
+        <label>Description</label>
+        <textarea
+            name="description"
+            placeholder="Enter product details"
+        ></textarea>
+
+        <button type="submit">
+            Add Produce
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

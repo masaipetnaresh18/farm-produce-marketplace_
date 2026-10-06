@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farm Produce Marketplace</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <h2>🌾 Farm Marketplace</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/add-product">Sell Produce</a>
+        <a href="/orders">Orders</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Farm Produce Marketplace</h1>
+
+    <p>
+        Connecting farmers directly with buyers.
+    </p>
+
+    <a class="button" href="/products">
+        Browse Products
+    </a>
+
+    <a class="button secondary" href="/add-product">
+        Sell Your Produce
+    </a>
+</section>
+
+<section class="container">
+
+    <h2>Available Produce</h2>
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <div class="card">
+
+            <h3>{{ product["name"] }}</h3>
+
+            <p>
+                <strong>Farmer:</strong>
+                {{ product["farmer_name"] }}
+            </p>
+
+            <p>
+                <strong>Available:</strong>
+                {{ product["quantity"] }} kg
+            </p>
+
+            <p>
+                <strong>Price:</strong>
+                ₹{{ product["price"] }} / kg
+            </p>
+
+            <p>
+                {{ product["description"] }}
+            </p>
+
+        </div>
+
+        {% else %}
+
+        <p>No products available yet.</p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+</body>
+</html>
